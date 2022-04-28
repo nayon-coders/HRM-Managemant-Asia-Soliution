@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hrm_management/flash-screen.dart';
-import 'package:hrm_management/view/login/login,dart.dart';
+import 'package:hrm_management/view/login/login.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {

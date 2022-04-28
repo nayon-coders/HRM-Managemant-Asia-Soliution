@@ -6,4 +6,5 @@ class appColors{
   static const Color titleTextColor = Color(0xff3C4858);
   static const Color subTitleTextColor = Color(0xff8492A6);
   static const Color whiteText = Color(0xffF5F5F7);
+  static const Color inputField = Color(0xff555599);
 }
