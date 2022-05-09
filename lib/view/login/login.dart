@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
+import 'package:hrm_management/view/home/home.dart';
+import 'package:hrm_management/view/index.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -15,6 +17,7 @@ class _UserLoginState extends State<UserLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        physics: const ScrollPhysics(),
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
@@ -89,20 +92,25 @@ class _UserLoginState extends State<UserLogin> {
                           ),
                         ),
                         const SizedBox(height: 15,),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 2.5,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100),
-                              color: appColors.inputField,
-                            ),
-                          child: Center(child: Text("Login",
-                            style: TextStyle(
-                              color: appColors.whiteText,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.sp,
-                            ),
-                          )),
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>IndexScreen()));
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2.5,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: appColors.inputField,
+                              ),
+                            child: Center(child: Text("Login",
+                              style: TextStyle(
+                                color: appColors.whiteText,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15.sp,
+                              ),
+                            )),
+                          ),
                         )
                       ],
                     )

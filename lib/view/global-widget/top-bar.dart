@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hrm_management/data/menu-items.dart';
 import 'package:hrm_management/model/menu/menu-item.dart';
+import 'package:hrm_management/view/index.dart';
 import 'package:hrm_management/view/profile/profile.dart';
 import 'package:sizer/sizer.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -71,7 +72,7 @@ TopBar({required this.pageName});
   onSelect(BuildContext context, MenuItemModel item) {
     switch (item){
       case MenuItems.profile:
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>IndexScreen(profile: true,)));
         break;
       case MenuItems.logOut:
         print("Logout");
