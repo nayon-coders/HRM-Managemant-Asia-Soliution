@@ -37,8 +37,8 @@ class AnalogClock extends StatelessWidget {
           decoration: const BoxDecoration(),
           child: Text(time.format(DateTime.now()),
             style: TextStyle(
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w600
+              fontSize: 13.sp,
+              fontWeight: FontWeight.bold
             ),
           ),
 

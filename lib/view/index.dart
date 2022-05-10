@@ -6,7 +6,7 @@ import 'package:hrm_management/view/profile/profile.dart';
 import 'package:hrm_management/view/working.dart';
 
 class IndexScreen extends StatefulWidget {
-   late bool? profile;
+    bool? profile;
   IndexScreen({Key? key, this.profile = false}) : super(key: key);
 
   @override
@@ -28,7 +28,7 @@ class _IndexScreenState extends State<IndexScreen> {
       _selectedIndex = index;
       widget.profile = false;
     });
-
+    widget.profile = false;
   }
 
   @override

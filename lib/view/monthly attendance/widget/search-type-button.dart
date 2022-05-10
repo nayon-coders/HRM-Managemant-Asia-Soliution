@@ -17,8 +17,7 @@ class MonthlyattendanceSearchButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
+    return  Container(
         padding: EdgeInsets.only(top: 2.h, bottom: 2.h),
         decoration: BoxDecoration(
           color: bgColor,
@@ -55,7 +54,6 @@ class MonthlyattendanceSearchButton extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }
