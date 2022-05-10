@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hrm_management/Utility/color.dart';
 import 'package:hrm_management/view/global-widget/top-bar.dart';
 import 'package:hrm_management/view/monthly%20attendance/widget/search-type-button.dart';
 
@@ -11,6 +12,10 @@ class MonthluAttendance extends StatefulWidget {
 }
 
 class _MonthluAttendanceState extends State<MonthluAttendance> {
+
+  bool montlySearchButton = false;
+  bool dailySearchButton = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,10 +27,36 @@ class _MonthluAttendanceState extends State<MonthluAttendance> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MonthlyattendanceSearchButton(),
-                    SizedBox(width: 10,),
-                    MonthlyattendanceSearchButton(),
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
+                         montlySearchMethod();
+                        });
+                      },
+                      child: montlySearchButton == true
+                          ? MonthlyattendanceSearchButton(
+                            text: 'Monthly Reports',
+                            bgColor: appColors.mainColor,
+                            textColor: appColors.white,)
+                          : MonthlyattendanceSearchButton(text: 'Monthly Reports',),
+                    ),
+                   const SizedBox(width: 10,),
+                    GestureDetector(
+                        onTap: (){
+                          dailySearchMethod();
+                        },
+                        child: dailySearchButton == true
+                            ? MonthlyattendanceSearchButton(
+                          text: 'Daily Reports',
+                          bgColor: appColors.mainColor,
+                          textColor: appColors.white,)
+                            : MonthlyattendanceSearchButton(text: 'Daily Reports',),
+                    ),
+
+
+
                   ],
                 ),
               )
@@ -33,5 +64,20 @@ class _MonthluAttendanceState extends State<MonthluAttendance> {
           ),
         )
     );
+  }
+
+  //montlySearchMethod();
+    void montlySearchMethod(){
+       setState(() {
+         montlySearchButton = true;
+         dailySearchButton = false;
+       });
+    }
+
+  void dailySearchMethod(){
+    setState(() {
+      montlySearchButton = false;
+      dailySearchButton = true;
+    });
   }
 }

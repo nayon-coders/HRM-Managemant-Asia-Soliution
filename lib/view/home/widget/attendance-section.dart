@@ -29,7 +29,7 @@ class AttendanceSection extends StatelessWidget {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.mainColor),
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 3.h, vertical: 2.h)),
-                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 18.sp))),
+                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 15.sp))),
                 ),
                 ElevatedButton(
                   child: Text('Check Out'),
@@ -37,7 +37,7 @@ class AttendanceSection extends StatelessWidget {
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.orange),
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 3.h, vertical: 2.h)),
-                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 18.sp))),
+                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 15.sp))),
                 ),
               ],
             ),
