@@ -152,7 +152,7 @@ class _MonthluAttendanceState extends State<MonthluAttendance> {
         child: Text(text,
             style: TextStyle(
             color: appColors.mainColor,
-            fontSize: 16.sp,
+            fontSize: 13.sp,
             fontWeight: FontWeight.w600,
         )
         ),

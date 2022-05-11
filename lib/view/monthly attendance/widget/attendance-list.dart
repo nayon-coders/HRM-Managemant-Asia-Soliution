@@ -76,7 +76,7 @@ class AttendanceList extends StatelessWidget {
     return Text(text,
         style: TextStyle(
           color: appColors.titleTextColor,
-          fontSize: 13.sp,
+          fontSize: 10.sp,
           fontWeight: FontWeight.w600,
         )
     );

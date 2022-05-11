@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
-import 'package:hrm_management/routing/routing.dart';
 import 'package:hrm_management/view/login/login.dart';
 import 'package:sizer/sizer.dart';
 import 'package:phlox_animations/phlox_animations.dart';
@@ -20,7 +19,7 @@ class _FlashScreenState extends State<FlashScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(
-        const Duration(seconds: 3),() => Navigator.of(context).push(UserLoginPageRoute()));
+        const Duration(seconds: 3),() => Navigator.push(context, MaterialPageRoute(builder: (context)=> UserLogin())));
   }
   
   @override

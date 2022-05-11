@@ -30,25 +30,25 @@ class MonthlyattendanceSearchButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                height: 15,
-                width: 15,
+                height: 12,
+                width: 12,
                 decoration: BoxDecoration(
                   color: radiusColor,
                   borderRadius: BorderRadius.circular(100),
-                  border: Border.all(width: 2, color: appColors.mainColor),
+                  border: Border.all(width: 1, color: appColors.mainColor),
                 ),
               ),
               const SizedBox(width: 2,),
               Text(text,
               style: TextStyle(
                 color: textColor,
-                fontSize: 13.sp,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.w600,
               ),),
               const SizedBox(width: 2,),
               Icon(
                   Icons.calendar_today_rounded,
-                size: 15.sp,
+                size: 12.sp,
                 color: textColor,
               ),
             ],

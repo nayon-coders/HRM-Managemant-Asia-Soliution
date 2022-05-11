@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
 import 'package:hrm_management/view/home/home.dart';
@@ -94,7 +95,26 @@ class _UserLoginState extends State<UserLogin> {
                         const SizedBox(height: 15,),
                         GestureDetector(
                           onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>IndexScreen()));
+                            Flushbar(
+                              message: "Your are login successfully",
+                              icon:  Icon(
+                                Icons.done,
+                                size: 28.0,
+                                color: appColors.success,
+                              ),
+                              messageSize: 12.sp,
+                              messageColor: appColors.success,
+                              borderWidth: 1,
+                              borderColor: Colors.grey,
+                              margin: EdgeInsets.all(6.0),
+                              flushbarStyle: FlushbarStyle.FLOATING,
+                              flushbarPosition: FlushbarPosition.TOP,
+                              textDirection: Directionality.of(context),
+                              borderRadius: BorderRadius.circular(12),
+                              duration: Duration(seconds: 4),
+                              leftBarIndicatorColor: appColors.success,
+                            ).show(context);
+
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width / 2.5,

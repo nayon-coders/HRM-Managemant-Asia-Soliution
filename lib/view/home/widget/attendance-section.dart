@@ -1,6 +1,8 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
 import 'package:hrm_management/view/global-widget/big-text.dart';
+import 'package:hrm_management/view/global-widget/notify.dart';
 import 'package:sizer/sizer.dart';
 
 class AttendanceSection extends StatelessWidget {
@@ -25,7 +27,27 @@ class AttendanceSection extends StatelessWidget {
               children: [
                 ElevatedButton(
                   child: const Text('Check In'),
-                  onPressed: () {},
+                  onPressed: () {
+                    Flushbar(
+                      message: "Your are login successfully",
+                      icon:  Icon(
+                        Icons.done,
+                        size: 28.0,
+                        color: appColors.success,
+                      ),
+                      messageSize: 12.sp,
+                      messageColor: appColors.success,
+                      borderWidth: 1,
+                      borderColor: Colors.grey,
+                      margin: EdgeInsets.all(6.0),
+                      flushbarStyle: FlushbarStyle.FLOATING,
+                      flushbarPosition: FlushbarPosition.TOP,
+                      textDirection: Directionality.of(context),
+                      borderRadius: BorderRadius.circular(12),
+                      duration: Duration(seconds: 4),
+                      leftBarIndicatorColor: appColors.success,
+                    ).show(context);
+                  },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.mainColor),
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 3.h, vertical: 2.h)),
@@ -33,7 +55,9 @@ class AttendanceSection extends StatelessWidget {
                 ),
                 ElevatedButton(
                   child: Text('Check Out'),
-                  onPressed: () {},
+                  onPressed: () {
+                    const Notify();
+                  },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.orange),
                       padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 3.h, vertical: 2.h)),

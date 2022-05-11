@@ -10,4 +10,5 @@ class appColors{
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
   static const Color orange = Color(0xffFF5630);
+  static const Color success = Color(0xff00c40e);
 }
