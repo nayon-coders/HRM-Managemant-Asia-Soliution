@@ -118,7 +118,7 @@ class _UserLoginState extends State<UserLogin> {
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width / 2.5,
-                              height: 50,
+                              height: 49,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
                                 color: appColors.inputField,
