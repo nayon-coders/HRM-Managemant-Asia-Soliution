@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListView(
                     children: [
                       //attendance option
-                      const AttendanceSection(),
+                       AttendanceSection(),
                       //clock
                       AnalogClock(),
                       //regularize attendance

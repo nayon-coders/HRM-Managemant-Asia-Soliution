@@ -1,13 +1,21 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
+import 'package:hrm_management/services/api_services.dart';
 import 'package:hrm_management/view/global-widget/big-text.dart';
-import 'package:hrm_management/view/global-widget/notify.dart';
 import 'package:sizer/sizer.dart';
 
-class AttendanceSection extends StatelessWidget {
-  const AttendanceSection({Key? key}) : super(key: key);
+import '../../../controller/check-in/checkin-controller.dart';
+import '../../../controller/user_controller/user-auth.dart';
+import '../../global-widget/notifiy.dart';
 
+class AttendanceSection extends StatefulWidget {
+  @override
+  State<AttendanceSection> createState() => _AttendanceSectionState();
+}
+
+class _AttendanceSectionState extends State<AttendanceSection> {
+  bool idChickin = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,27 +34,13 @@ class AttendanceSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  child: const Text('Check In'),
+                  child: idChickin != true ? const Text('Check In')
+                  : CircularProgressIndicator(
+                    color: appColors.white,
+                  ),
                   onPressed: () {
-                    Flushbar(
-                      message: "Your are login successfully",
-                      icon:  Icon(
-                        Icons.done,
-                        size: 28.0,
-                        color: appColors.success,
-                      ),
-                      messageSize: 12.sp,
-                      messageColor: appColors.success,
-                      borderWidth: 1,
-                      borderColor: Colors.grey,
-                      margin: EdgeInsets.all(6.0),
-                      flushbarStyle: FlushbarStyle.FLOATING,
-                      flushbarPosition: FlushbarPosition.TOP,
-                      textDirection: Directionality.of(context),
-                      borderRadius: BorderRadius.circular(12),
-                      duration: Duration(seconds: 4),
-                      leftBarIndicatorColor: appColors.success,
-                    ).show(context);
+
+                    _checkIn();
                   },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.mainColor),
@@ -56,7 +50,6 @@ class AttendanceSection extends StatelessWidget {
                 ElevatedButton(
                   child: Text('Check Out'),
                   onPressed: () {
-                    const Notify();
                   },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.orange),
@@ -70,5 +63,46 @@ class AttendanceSection extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _checkIn() async{
+    setState((){
+      idChickin = true;
+    });
+
+     var response = await CheckInController().CheckInMethod();
+     print(response.statusCode);
+
+     if(response.statusCode == 201){
+       setState((){
+         idChickin = false;
+         Flushbar(
+           title: "Attendance Success",
+           titleColor: appColors.white,
+           message: "Employee Successfully Clock In.",
+           icon:  Icon(
+             Icons.done,
+             size: 28.0,
+             color: appColors.success,
+           ),
+           messageSize: 12.sp,
+           messageColor: appColors.success,
+           borderWidth: 1,
+           borderColor: Colors.grey,
+           margin: EdgeInsets.all(6.0),
+           flushbarStyle: FlushbarStyle.FLOATING,
+           flushbarPosition: FlushbarPosition.TOP,
+           textDirection: Directionality.of(context),
+           borderRadius: BorderRadius.circular(12),
+           duration: Duration(seconds: 4),
+           leftBarIndicatorColor: appColors.success,
+         )..show(context);
+       });
+       print(response.statusCode);
+
+     }else{
+      print(response.statusCode);
+     }
+
   }
 }

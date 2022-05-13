@@ -15,6 +15,7 @@ class IndexScreen extends StatefulWidget {
 
 class _IndexScreenState extends State<IndexScreen> {
   int _selectedIndex = 0;
+
   final List<Widget> _children = [
     const HomeScreen(),
     const working(),
@@ -34,7 +35,8 @@ class _IndexScreenState extends State<IndexScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: widget.profile == true ? const Profile() : _children[_selectedIndex],
+      body: widget.profile != true ? _children[_selectedIndex]
+          : const Profile(),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [

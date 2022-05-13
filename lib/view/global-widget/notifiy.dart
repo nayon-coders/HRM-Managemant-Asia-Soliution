@@ -4,15 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
 import 'package:sizer/sizer.dart';
 
-class Notify extends StatelessWidget {
+class Notify extends StatefulWidget {
   const Notify({Key? key}) : super(key: key);
 
   @override
+  State<Notify> createState() => _NotifyState();
+}
+
+class _NotifyState extends State<Notify> {
+  @override
   Widget build(BuildContext context) {
-    return Notic(context);
-  }
-  Widget Notic(BuildContext context){
-    return Flushbar(
+    return  Flushbar(
+      title: "login Success",
+      titleColor: appColors.white,
       message: "Your are login successfully",
       icon:  Icon(
         Icons.done,

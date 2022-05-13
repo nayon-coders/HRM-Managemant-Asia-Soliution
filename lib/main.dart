@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hrm_management/flash-screen.dart';
 import 'package:hrm_management/view/login/login.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
-  runApp(const MyApp());
+   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
