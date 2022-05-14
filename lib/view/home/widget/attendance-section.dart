@@ -1,8 +1,10 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:hrm_management/Utility/color.dart';
+import 'package:hrm_management/controller/check-out/checkout-controller.dart';
 import 'package:hrm_management/services/api_services.dart';
 import 'package:hrm_management/view/global-widget/big-text.dart';
+import 'package:hrm_management/view/global-widget/loading.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../controller/check-in/checkin-controller.dart';
@@ -15,7 +17,8 @@ class AttendanceSection extends StatefulWidget {
 }
 
 class _AttendanceSectionState extends State<AttendanceSection> {
-  bool idChickin = false;
+  bool isCheckin = false;
+  bool isChechkOut = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,7 +37,7 @@ class _AttendanceSectionState extends State<AttendanceSection> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
-                  child: idChickin != true ? const Text('Check In')
+                  child: isCheckin != true ? const Text('Check In')
                   : CircularProgressIndicator(
                     color: appColors.white,
                   ),
@@ -48,8 +51,14 @@ class _AttendanceSectionState extends State<AttendanceSection> {
                       textStyle: MaterialStateProperty.all(TextStyle(fontSize: 15.sp))),
                 ),
                 ElevatedButton(
-                  child: Text('Check Out'),
+                  child: isChechkOut !=true ? Text('Check Out')
+                  :CircularProgressIndicator(
+                    color: appColors.white,
+                  ),
                   onPressed: () {
+
+                    _checkOut();
+
                   },
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(appColors.orange),
@@ -67,7 +76,7 @@ class _AttendanceSectionState extends State<AttendanceSection> {
 
   void _checkIn() async{
     setState((){
-      idChickin = true;
+      isCheckin = true;
     });
 
      var response = await CheckInController().CheckInMethod();
@@ -75,7 +84,7 @@ class _AttendanceSectionState extends State<AttendanceSection> {
 
      if(response.statusCode == 201){
        setState((){
-         idChickin = false;
+         isCheckin = false;
          Flushbar(
            title: "Attendance Success",
            titleColor: appColors.white,
@@ -104,5 +113,49 @@ class _AttendanceSectionState extends State<AttendanceSection> {
       print(response.statusCode);
      }
 
+  }
+
+  void _checkOut() async{
+    setState((){
+      isChechkOut = true;
+    });
+
+    var response = await CheckOutController().CheckOutMethod();
+    print(response.statusCode);
+
+    if(response.statusCode == 201){
+      setState((){
+        isChechkOut = false;
+        Flushbar(
+          title: "Attendance Success",
+          titleColor: appColors.white,
+          message: "Employee Successfully Clock Out.",
+          icon:  Icon(
+            Icons.done,
+            size: 28.0,
+            color: appColors.success,
+          ),
+          messageSize: 12.sp,
+          messageColor: appColors.success,
+          borderWidth: 1,
+          borderColor: Colors.grey,
+          margin: EdgeInsets.all(6.0),
+          flushbarStyle: FlushbarStyle.FLOATING,
+          flushbarPosition: FlushbarPosition.TOP,
+          textDirection: Directionality.of(context),
+          borderRadius: BorderRadius.circular(12),
+          duration: Duration(seconds: 4),
+          leftBarIndicatorColor: appColors.success,
+        )..show(context);
+      });
+      print(response.statusCode);
+
+    }else{
+      print(response.statusCode);
+    }
+
+    setState(() {
+      isChechkOut = false;
+    });
   }
 }
